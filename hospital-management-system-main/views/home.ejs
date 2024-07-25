@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hospital Management System</title>
+    <link rel="stylesheet" type="text/css" href="/css/home.css">
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <a href="/" class="button">Home</a>
+            <div class="welcome">
+                <h2>Welcome to the Hospital Management System</h2>
+                
+            </div>
+        </div>
+        <br>
+        <div class="content">
+            <div class="button-container">
+                <a href="/api/patients" class="button">View Patients</a>
+                <a href="/add-patient" class="button">Add Patient</a>
+                <a href="#" onclick="showSearchForm()" class="button">Search Patient</a>
+                <% if (typeof error !== 'undefined') { %>
+                    <p><%= error %></p>
+                <% } %>
+            </div>
+            <div class="form-container" id="searchForm" style="display: none;">
+                <form action="/api/patients" method="GET">
+                    <input type="text" name="name" placeholder="Enter patient name">
+                    <br/>
+                    <button type="submit" class="button">Search</button>
+                </form>
+            </div>
+
+            <a href="#" onclick="showSearchForm1()" class="button">Search Patient by Date</a>
+            <div class="form-container" id="searchForm1" style="display: none;">
+                <form action="/api/patients" method="GET">
+                    <input type="date" name="date" placeholder="Enter Date">
+                    <br/>
+                    <button type="submit" class="button">Search</button>
+                </form>
+            </div>
+
+            <div class="welcome">
+                
+                <h3>Use the buttons above to view and manage patient records.</h3>
+            </div>
+        </div>
+    
+ 
+        <% if (typeof message !== 'undefined') { %>
+            <p><%= message %></p>
+        <% } %>
+    </div>
+ 
+    <script>
+    function showSearchForm() {
+        var form = document.getElementById('searchForm');
+        if (form.style.display === 'none') {
+            form.style.display = 'block';
+        } else {
+            form.style.display = 'none';
+        }
+    }
+    </script>
+    <script>
+        function showSearchForm1() {
+            var form = document.getElementById('searchForm1');
+            if (form.style.display === 'none') {
+                form.style.display = 'block';
+            } else {
+                form.style.display = 'none';
+            }
+        }
+        </script>
+    
+</body>
+</html>
